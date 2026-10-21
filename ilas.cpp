@@ -5,29 +5,31 @@
 using namespace std;
 
 string inverseToTwoComplement(string binary) {
-    // Идем с конца строки (младший разряд)
+
     int carry = 1; 
-    for (int i = binary.length() - 1; i >= 0; i--) {
+    for (int i = binary.length() - 1; i >= 0; i--) 
+    {
         if (binary[i] == '1' && carry == 1) {
             binary[i] = '0';
-            carry = 1; // перенос единицы дальше
+            carry = 1;
         } else if (binary[i] == '0' && carry == 1) {
             binary[i] = '1';
-            carry = 0; // перенос закончился
-            break;     // дальше можно не идти
+            carry = 0;
+            break;
         }
     }
     return binary;
 }
 
-int main() {
+int main() 
+{
     setlocale(LC_ALL, "Russian");
     string reverseCode;
 
     cout << "Введите обратный двоичный код: ";
     cin >> reverseCode;
 
-    // Проверка на корректность ввода
+
     for (char c : reverseCode) {
         if (c != '0' && c != '1') {
             cout << "Ошибка: ввод должен состоять только из 0 и 1." << endl;
